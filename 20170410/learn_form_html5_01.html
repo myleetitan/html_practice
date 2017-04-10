@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>HTML5 폼 연습 1</title>
+  <style type="text/css">
+    label {
+      display: block;
+    }
+  </style>
+  <script type="text/javascript">
+    /* 이메일 주소에 대한 유효성 검사 결과를 <body> 태그 안에 별도로 표시하는 함수 (작성 중..)
+    */
+    function checkEmail(address) {
+      var resultBox = document.createElement("div");
+    }
+  </script>
+</head>
+<body>
+  <!-- html에서 추가된 새로운 입력형 학습 -->
+  <form action="">
+    <label>숫자 : <input type="number" name="number" min="10"  max="15" /></label>
+    <label>범위 : <input type="range" name="range" min="" /></label>
+    <br />
+    <label>색깔 : <input type="color" name="color" /></label>
+    <br />
+    <label>날짜 : <input type="date" name="date" /></label>
+    <!-- datetime은 타임스탬프가 아닌가 생각됨 -->
+    <label>시각 : <input type="datetime" name="datetime" /></label>
+    <label>현지시각 : <input type="datetime-local" name="datetime-local" /></label>
+    <br />
+    <label>월 : <input type="month" name="month" /></label>
+    <label>주 : <input type="week" name="week" /></label>
+    <label>시간 : <input type="time" name="time" /></label>
+    <br />
+    <!-- 이메일 옆에 유효성 검사 결과 출력은 미완성입니다. -->
+    <label>이메일 : 
+      <input type="email" name="email" onkeyup="checkEmail(this.value)" /></label>
+    <label>전화번호 : <input type="tel" name="tel" /></label>
+    <label>URL : <input type="url" name="url" /></label>
+    <br />
+    <label>검색 : <input type="search" name="search" /></label>
+    <input type="submit" />
+  </form>
+</body>
+</html>

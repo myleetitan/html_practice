@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>폼 연습 7 : 파일 업로드</title>
+</head>
+<body>
+  <!-- 강의에서는 POST 방식으로 전송해야된다고 했지만, 결과 확인을 위해 GET으로 지정 -->
+  <form action="./learn_form_07.html" method="get" enctype="multipart/form-data" >
+    <input type="file" name="fileName" />
+    <input type="submit" />
+  </form>
+
+  <!-- 파일이름이 URL 뒤에 GET 파라미터로 뜨면 모든 화면 내용을 삭제하고 파일 이름과 "돌아가기" 버튼만 출력
+      "돌아가기" 버튼을 누르면 URL 뒤에 달린 GET 파라미터를 삭제하고 페이지 새로고침하여 업로드 폼을 정상출력한다.
+      아울러 다음의 <script>태그를 <head>태그 안에 두면
+      <body>태그가 파싱되기 전이므로 익명함수가 정상 실행되지 않기에 <body> 태그 끝부분으로 옮김.
+   -->
+  <script type="text/javascript">
+  (function () {
+    var fileName = document.URL.match(/[\?\&]fileName\=[^\?\&\\=]+/)[0];
+    if(fileName != null) {
+      fileName = fileName.split("=")[1];
+
+      var div = document.createElement("div");
+      div.style.minwidth = "100px";
+      div.style.minheight = "100px";
+      div.style.background = "#203060 color";
+      div.innerHTML = fileName;
+
+      while(document.body.childNodes.length > 0) {
+        document.body.removeChild(document.body.childNodes[0]);
+      }
+
+      var button = document.createElement("input");
+      button.setAttribute("type", "button");
+      button.value = "돌아가기";
+      button.addEventListener("click", function () {
+        location.href = document.URL.split("?")[0];
+      });
+
+      document.body.appendChild(div);
+      document.body.appendChild(button);
+    }
+  })();
+  </script>
+</body>
+</html>
